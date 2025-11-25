@@ -1,0 +1,30 @@
+POST http://127.0.0.1:5000/predict
+Content-Type: application/json
+
+{
+    "method": "UPI",
+    "bank": "SBI",
+    "amount": 500,
+    "network": "Fast",
+    "time_of_day": "Morning",
+    "retries": 0,
+    "past_failures": 0
+}
+###
+POST http://127.0.0.1:5000/log
+Content-Type: application/json
+
+{
+    "method": "UPI",
+    "bank": "SBI",
+    "amount": 500,
+    "network": "Fast",
+    "time_of_day": "Morning",
+    "retries": 0,
+    "past_failures": 0,
+    "success_prob": 90.0,
+    "status": "low-risk",
+    "reason": "Very high chance of success"
+}
+###
+GET http://127.0.0.1:5000/stats
