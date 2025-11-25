@@ -1,129 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Payment Success Predictor</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>PayArise – Redirecting…</title>
 
-  <!-- Chart.js for Dashboard -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-  <!-- Top Navigation -->
-  <header class="topbar">
-    <div class="brand">Payment Success Predictor</div>
-  </header>
-
-  <!-- Main Layout -->
-  <main class="main-grid">
-
-    <!-- Prediction Form Card -->
-    <section class="card predict-card">
-      <h2>Simulate Payment</h2>
-
-      <div class="form-row">
-        <label>Payment Method</label>
-        <select id="method">
-          <option>UPI</option>
-          <option>Card</option>
-          <option>Wallet</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <label>Bank</label>
-        <select id="bank">
-          <option>SBI</option>
-          <option>HDFC</option>
-          <option>ICICI</option>
-          <option>IDFC</option>
-          <option>BOB</option>
-          <option>Axis</option>
-        </select>
-      </div>
-
-      <div class="form-row half">
-        <div>
-          <label>Amount (₹)</label>
-          <input id="amount" type="number" value="500" />
-        </div>
-        <div>
-          <label>Network</label>
-          <select id="network">
-            <option>Fast</option>
-            <option>Average</option>
-            <option>Slow</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-row half">
-        <div>
-          <label>Time of Day</label>
-          <select id="time">
-            <option>Morning</option>
-            <option>Afternoon</option>
-            <option>Evening</option>
-            <option>Night</option>
-            <option>Late Night</option>
-          </select>
-        </div>
-        <div>
-          <label>Retries</label>
-          <input id="retries" type="number" value="0" />
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label>Past Failures</label>
-        <input id="failures" type="number" value="0" />
-      </div>
-
-      <button id="btnPredict">Predict Success</button>
-
-      <div id="resultCard" class="result-card hidden">
-        <div class="big-percent" id="percent">--%</div>
-        <div id="statusText" class="status-text">--</div>
-        <div id="reasonText" class="reason-text">--</div>
-      </div>
-    </section>
-
-    <!-- Dashboard Chart Area -->
-    <aside class="right-column">
-
-      <div class="stats-row">
-        <div class="stat-card">
-          <div class="stat-title">Avg Success Rate</div>
-          <div id="avgSuccess" class="stat-value">--%</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-title">Total Transactions</div>
-          <div id="totalAttempts" class="stat-value">0</div>
-        </div>
-      </div>
-
-      <div class="chart-card">
-        <h3>Bank-wise Success Rate</h3>
-        <canvas id="bankChart"></canvas>
-      </div>
-
-      <div class="chart-card">
-        <h3>Method-wise Success Rate</h3>
-        <canvas id="methodChart"></canvas>
-      </div>
-
-      <div class="chart-card">
-        <h3>Failure Reasons</h3>
-        <canvas id="reasonChart"></canvas>
-      </div>
-
-    </aside>
-
-  </main>
-
-  <script src="main.js"></script>
-</body>
+    <!-- Immediately redirect to welcome.html -->
+    <meta http-equiv="refresh" content="0; url=welcome.html" />
+  </head>
+  <body style="background:#05081a; color:white; font-family:system-ui; text-align:center; padding-top:50px;">
+    <p>Redirecting to PayArise…</p>
+    <p>If nothing happens, <a href="welcome.html" style="color:#00c4ff;">click here</a>.</p>
+  </body>
 </html>
