@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PayArise</title>
+  <link rel="stylesheet" href="mobile.css" />
+</head>
+
+<body>
+  <div class="app-frame">
+
+    <!-- Top bar -->
+    <div class="topbar">
+      <div id="backBtn" class="back">⟵</div>
+      <div id="headerTitle" class="header-title">PayArise</div>
+      <div id="userBadge" class="user-badge"></div>
+
+      <!-- three-dots menu icon -->
+      <div id="menuBtn" class="menu-btn" title="Menu">⋮</div>
+
+      <!-- dropdown -->
+      <div id="menuDropdown" class="menu-dropdown hidden">
+        <div id="menuLogout" class="menu-item">Logout</div>
+      </div>
+    </div>
+
+    <!-- MAIN SCREENS -->
+    <main class="screen-area">
+
+      <!-- LOGIN SCREEN (Logo circle + Name) -->
+      <section id="screenLogin" class="screen">
+        <div class="login-wrap">
+
+          <div class="welcome-brand" style="align-items:center;flex-direction:column;gap:8px;">
+            <div class="logo-circle" style="width:92px;height:92px;font-size:30px">PA</div>
+            <div style="text-align:center">
+              <div class="brand-title" style="font-size:20px">PayArise</div>
+              <div class="brand-tag">Know Before You Pay</div>
+            </div>
+          </div>
+
+          <div style="height:18px"></div>
+
+          <div class="login-form">
+            <label class="login-label">Username</label>
+            <input id="loginUser" type="text" class="login-input" placeholder="Enter username">
+
+            <label class="login-label">Password / PIN</label>
+            <input id="loginPass" type="password" class="login-input" placeholder="Enter password">
+
+            <button id="loginBtn" class="login-btn">Login</button>
+          </div>
+
+          <p class="login-note">Demo login — enter anything to continue</p>
+        </div>
+      </section>
+
+      <!-- Screen: Type (Send Money) -->
+      <section id="screenType" class="screen hidden">
+        <h2 class="screen-head">Send Money</h2>
+        <div class="cards">
+          <div class="type-card" data-type="mobile">
+            <div class="t-left">📱<div class="t-title">Mobile</div>
+              <div class="t-sub">Send to phone</div>
+            </div>
+            <input type="radio" />
+          </div>
+          <div class="type-card" data-type="upi">
+            <div class="t-left">🔗<div class="t-title">UPI ID</div>
+              <div class="t-sub">Pay using UPI</div>
+            </div>
+            <input type="radio" />
+          </div>
+          <div class="type-card" data-type="bank">
+            <div class="t-left">🏦<div class="t-title">Bank Transfer</div>
+              <div class="t-sub">Account + IFSC</div>
+            </div>
+            <input type="radio" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen: Details -->
+      <section id="screenDetails" class="screen hidden">
+        <h2 class="screen-head">Enter Details</h2>
+
+        <div id="inputMobile" class="input-block">
+          <label>Mobile Number</label>
+          <input id="mobileField" type="tel" placeholder="10-digit mobile" inputmode="numeric" />
+        </div>
+
+        <div id="inputUpi" class="input-block hidden">
+          <label>UPI ID</label>
+          <input id="upiField" type="text" placeholder="example@bank" />
+        </div>
+
+        <div id="inputBank" class="input-block hidden">
+          <label>Account Number</label>
+          <input id="accField" type="text" placeholder="Account number" />
+          <label>IFSC</label>
+          <input id="ifscField" type="text" placeholder="AAAA0BBBBBB" />
+        </div>
+
+        <div id="fetchStatus" class="fetch-status hidden"></div>
+        <div id="errorMsg" class="err-msg hidden"></div>
+
+        <div id="receiverBox" class="receiver-box hidden">
+          <div class="receiver-left">
+            <div id="recvAvatar" class="receiver-avatar">PA</div>
+          </div>
+          <div class="receiver-right">
+            <div id="recvName" class="recv-name">Merchant Name</div>
+            <div id="recvBank" class="recv-bank">Bank Name</div>
+            <div id="recvUpi" class="recv-upi">UPI/Mobile/Acc</div>
+          </div>
+        </div>
+
+        <button id="continueBtn" class="btn-continue disabled">Continue</button>
+      </section>
+
+      <!-- Screen: Amount -->
+      <section id="screenAmount" class="screen hidden">
+        <h2 class="screen-head">Enter Amount</h2>
+
+        <div class="amount-wrap">
+          <input id="amountField" class="amount-input" type="number" placeholder="₹ Enter amount" inputmode="numeric" />
+        </div>
+
+        <!-- prediction card injected here -->
+        <div id="predContainer"></div>
+
+        <button id="payNowBtn" class="pay-btn disabled">Pay Now</button>
+      </section>
+
+      <!-- Screen: PIN -->
+      <section id="screenPin" class="screen hidden">
+        <h2 class="screen-head">Enter UPI PIN</h2>
+
+        <div class="pin-dots">
+          <div id="p1" class="pin-dot"></div>
+          <div id="p2" class="pin-dot"></div>
+          <div id="p3" class="pin-dot"></div>
+          <div id="p4" class="pin-dot"></div>
+        </div>
+
+        <div class="keypad">
+          <div class="key">1</div>
+          <div class="key">2</div>
+          <div class="key">3</div>
+          <div class="key">4</div>
+          <div class="key">5</div>
+          <div class="key">6</div>
+          <div class="key">7</div>
+          <div class="key">8</div>
+          <div class="key">9</div>
+          <div class="key del">⌫</div>
+          <div class="key">0</div>
+          <div class="key ok">OK</div>
+        </div>
+      </section>
+
+      <!-- Screen: Processing -->
+      <section id="screenProcessing" class="screen hidden">
+        <div class="processing-wrap">
+          <div class="spinner"></div>
+          <div class="muted">Processing your payment…</div>
+          <div class="muted small">Please do not close or press back</div>
+        </div>
+      </section>
+
+      <!-- Screen: Result -->
+      <section id="screenResult" class="screen hidden">
+        <div class="result-box">
+          <div id="resultTitle" class="res-success">Payment Successful</div>
+          <div id="resultMsg" class="res-msg">Details here</div>
+          <button id="resultDoneBtn" class="res-btn">Done</button>
+        </div>
+      </section>
+
+      <!-- Screen: History (optional) -->
+      <section id="screenHistory" class="screen hidden">
+        <h2 class="screen-head">History</h2>
+        <div id="historyList"></div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Secret Dev Panel (hidden until unlocked) -->
+  <div id="devPanel" class="hidden">
+    <div class="dev-btn" id="forceSuccess">Force Success</div>
+    <div class="dev-btn" id="forceModerate">Force Moderate</div>
+    <div class="dev-btn" id="forceFail">Force Fail</div>
+  </div>
+
+  <script src="mobile.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PayArise — Welcome</title>
+  <link rel="stylesheet" href="mobile/mobile.css" />
+</head>
+<body>
+  <div class="app-frame center-frame">
+    <div class="welcome-wrap">
+      <div class="welcome-brand">
+        <div class="logo-circle">PA</div>
+        <div>
+          <div class="brand-title">PayArise</div>
+          <div class="brand-tag">Know Before You Pay</div>
+        </div>
+      </div>
+
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <label class="label">Username</label>
+        <input id="username" type="text" placeholder="Enter username" />
+
+        <label class="label">Password</label>
+        <input id="password" type="password" placeholder="Enter password" />
+
+        <div id="loginError" class="error-msg hidden"></div>
+
+        <button id="loginBtn" class="btn-primary">Sign in</button>
+
+        <div class="login-foot">
+          <small>Demo: <strong>admin / 1234</strong></small>
+        </div>
+      </form>
+
+      <div class="welcome-footer">PayArise • Demo Build</div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  const form = document.getElementById('loginForm');
+  const user = document.getElementById('username');
+  const pass = document.getElementById('password');
+  const err = document.getElementById('loginError');
+
+  function showErr(t){ err.classList.remove('hidden'); err.innerText = t; }
+  function clearErr(){ err.classList.add('hidden'); err.innerText = ''; }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearErr();
+    const u = user.value.trim(), p = pass.value.trim();
+    if(!u || !p){ showErr('Enter username & password'); return; }
+    // demo creds
+    if(u === 'admin' && p === '1234'){
+      // ok
+    }
+    // store and redirect
+    localStorage.setItem('payaris_user', u);
+    // go to main app
+    window.location.href = './mobile/mobile.html';
+  });
+})();
+</script>
+</body>
+</html>
